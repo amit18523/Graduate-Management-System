@@ -1,0 +1,85 @@
+
+
+<div class="container-fluid addMockInterview">
+  <h1 class="titleForm">Schedule Interview Form</h1>
+
+  <form [formGroup]="scheduleInterview" (ngSubmit)="onSubmit()">
+
+    <div class="form-group givespace">
+      <label>Batch Name</label>
+      
+        <!-- <option [value]="i.batchName" *ngFor="let i of getBatchName">{{i.batchName}}</option> -->
+        <select formControlName="batchName" class="form-control"
+        [class.is-invalid]="batchName?.invalid && batchName?.touched">
+        <option value="">Batch Name</option>
+
+        <!-- <option *ngFor="let obj of here" [ngValue]="obj">{{obj}}</option> -->
+        <option [value]="i.batchName" *ngFor="let i of getBatchName">{{i.batchName}}</option>
+      </select>
+      <!-- {{batchName?.invalid}} -->
+      <div *ngIf="batchName?.invalid && batchName?.touched">
+
+        <small class="text-danger" *ngIf="batchName?.errors?.['required']">Field
+          is required</small>
+      </div>
+      
+    </div>
+
+    <div class="form-group givespace">
+      <label>Job ID </label>
+      <select formControlName="jobId" class="form-control" #se
+      [class.is-invalid]="jobId?.invalid && jobId?.touched" (click)="getJobIdSlected(se.value)">
+      <option value="">Job Id</option>
+      <option [value]="i.jobId" *ngFor="let i of getJobId">{{i.jobId}} - {{i.client}}</option>
+    </select>
+    <div *ngIf="jobId?.invalid && jobId?.touched">
+      <small class="text-danger" *ngIf="jobId?.errors?.['required']">Field
+        is required</small>
+    </div>
+    </div>
+
+    <div class="form-group givespace">
+      <label>Graduate ID </label>
+ 
+        <!-- <option [value]="i.empId" *ngFor="let i of getEmpId">{{i.empId}}</option> -->
+        <select formControlName="empId" class="form-control"
+        [class.is-invalid]="empId?.invalid && empId?.touched">
+
+        <option value="" [disabled]="!(!jobId?.invalid)">Graduate ID</option>
+        <!-- <option *ngFor="let obj of here" [ngValue]="obj">{{obj}}</option> -->
+        <option [value]="i" *ngFor="let i of elegibleList">{{i}}</option>
+      </select>
+      <!-- {{empId?.invalid}} -->
+      <div *ngIf="empId?.invalid && empId?.touched">
+
+        <small class="text-danger" *ngIf="empId?.errors?.['required']">Field
+          is required</small>
+      </div>
+      
+    </div>
+
+    <div class="form-group givespace">
+      <label class="control-label" for="date">Date</label>
+      <input type="date" formControlName="interviewDate" class="form-control" id="date" name="date" placeholder="MM/DD/YYYY"/>
+      <!-- <input [class.is-invalid]="date?.invalid && date?.touched" type="text" formControlName="date" id="date"
+      class="formbold-form-input" required>
+  {{date?.invalid}}  
+      <div *ngIf="date?.invalid && date?.touched">
+        <small class="text-danger" *ngIf="date?.errors?.['required']">Date is required</small>
+      </div> -->
+    </div>
+    <div class="form-group givespace">
+      <label for="time" class="formbold-form-label">Interview Time</label>
+      <!-- <input type="time" formControlName="time" id="interviewTime" class="formbold-form-input" required> -->
+      <input [class.is-invalid]="time?.invalid && time?.touched" type="time" formControlName="time" id="time"
+      class="formbold-form-input" required>
+  <!-- {{time?.invalid}}   -->
+      <div *ngIf="time?.invalid && time?.touched">
+        <small class="text-danger" *ngIf="time?.errors?.['required']">Field is required</small>
+      </div>
+    </div>
+  
+    <br>
+    <button class="btn btn-primary" type="submit"  [disabled]="!scheduleInterview.valid">Schedule</button>
+
+  </form>

@@ -1,0 +1,63 @@
+<div class="container-fluid addMockInterview">
+  <h1 class="titleForm">Blocked Form</h1>
+  
+
+  <form [formGroup]="blocked" (ngSubmit)="onSubmit()">
+    <div class="form-group givespace">
+      <label>Batch Name </label>
+
+      <select formControlName="batchName" class="form-control" #sel
+        [class.is-invalid]="batchName?.invalid && batchName?.touched"
+        (click)="getBatch(sel.value)">
+        <option value="">Batch Name</option>
+
+       
+        <option [value]="i.batchId" *ngFor="let i of getBatchName">{{i.batchName}}</option>
+      </select>
+      <!-- {{batchName?.invalid}} -->
+      <div *ngIf="batchName?.invalid && batchName?.touched">
+
+        <small class="text-danger" *ngIf="batchName?.errors?.['required']">Field
+          is required</small>
+      </div>
+    </div>
+
+    <div class="form-group givespace">
+      <label>Job ID </label>
+      <select formControlName="jobId" class="form-control" #se
+        [class.is-invalid]="jobId?.invalid && jobId?.touched"
+        (click)="getJobIdSlected(se.value)">
+        <option value="">Job Id</option>
+        <option [value]="i.jobId" *ngFor="let i of getJobId">{{i.jobId}} -
+          {{i.client}}</option>
+      </select>
+
+      <div *ngIf="jobId?.invalid && jobId?.touched">
+
+        <small class="text-danger" *ngIf="jobId?.errors?.['required']">Field
+          is required</small>
+      </div>
+    </div>
+    <div class="form-group givespace">
+      <label>Graduate ID </label>
+
+      <select formControlName="empId" class="form-control"
+        [class.is-invalid]="empId?.invalid && empId?.touched">
+
+        <option value="" [disabled]="!(!jobId?.invalid&&!batchName?.invalid)">Graduate
+          ID</option>
+
+        <option [value]="i" *ngFor="let i of elegibleList">{{i}}</option>
+      </select>
+
+      <div *ngIf="empId?.invalid && empId?.touched">
+
+        <small class="text-danger" *ngIf="empId?.errors?.['required']">Field
+          is required</small>
+      </div>
+    </div>
+
+
+    <br>
+    <button class="btn btn-primary" type="submit" [disabled]="!blocked.valid">Register</button>
+  </form>

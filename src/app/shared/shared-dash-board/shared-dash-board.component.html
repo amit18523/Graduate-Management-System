@@ -1,0 +1,62 @@
+<mat-form-field>
+  <mat-select placeholder="Batch">
+    <mat-option *ngFor="let i of storeBatchName"[value]="i.batchName"
+      (click)="filterData(i.batchName, i.batchId)">
+      {{i.batchName}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 py-2 dashboardOuterDiv">
+      <div class="card totalStudent">
+        <div class="card-body dashboardGrad">
+          <h1 class="card-title" style="color:#205295;">TOTAL GRADUATE</h1>
+          <h1 class="card-title">
+            <span *ngIf="show" style="font-size: 200%; text-align: center;
+              color:#205295;">{{totalGrads}}</span>
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4 py-2 dashboardOuterDiv">
+      <div class="card studentPlaced">
+        <div class="card-body dashboardGrad">
+          <h1 class="card-title" style="color:#285430;">GRADS PLACED</h1>
+          <h1>
+            <span *ngIf="show" margin-top="10px" style="font-size: 200%; text-align: center;
+              color:#285430">{{selectedGrads}}</span>
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4 py-2 dashboardOuterDiv">
+      <div class="card yetPlaced">
+        <div class="card-body dashboardGrad">
+          <h1 class="card-title" style="color:#EF9A53;">NOT PLACED</h1>
+          <h1>
+            <span *ngIf="show" style="font-size: 200%; text-align: center;
+              color:#EF9A53">{{unplacedGrads}}</span>
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4 py-2 dashboardOuterDiv">
+      <div class="card Requirements">
+        <div class="card-body dashboardGrad">
+          <h1 class="card-title" style="color:#7F167F;">REQUIREMENTS</h1>
+          <h1>
+            <span *ngIf="show" style="font-size: 200%; align-content: center;
+              color:#7F167F">{{realRequirements}}</span>
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

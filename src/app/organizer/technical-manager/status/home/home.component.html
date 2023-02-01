@@ -1,0 +1,22 @@
+<div class="form-group">
+  <select #val (click)="onChangeValue(val.value)" class="form-control"
+    name="sel3">
+    <option val=""> Select Batch </option>
+    <option [value]="i.batchName" *ngFor="let i of batches">{{i.batchName}}</option>
+  </select>
+</div>
+<br>
+<button type="button" class="btn btn-primary formbold-btn"
+  (click)="getStatus()">Approval Status</button>
+
+<div *ngIf="showStausDiv" class="container" [ngClass]="[approvalCalendar == 1? 'GreenClass' : 'RedClass']">
+  <div  class="content">
+    <h1>Technical Calendar : {{statusApprovalCalendar}}</h1>
+  </div>
+</div>
+
+<div *ngIf="showStausDiv" class="container"  [ngClass]="[approvalCurriculum == 1? 'GreenClass' : 'RedClass']">
+  <div class="content">
+    <h1>Curriculum : {{statusApprovalCurriculum}}</h1>
+  </div>
+</div>

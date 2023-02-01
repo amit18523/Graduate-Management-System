@@ -1,0 +1,23 @@
+<div class="container-fluid addFeedback">
+    <h1 class="titleForm">Batch Form</h1>
+  
+     <form [formGroup]="batchForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label>Batch Name</label>
+            <input type="text" formControlName="batchName" id="batchName" class="formbold-form-input" required>
+        </div>
+    <br>
+        <button class="btn btn-primary" type="submit"[disabled]="!batchForm.valid">Submit</button> 
+ <!-- <mat-card>
+            <mat-card-content>Simple card</mat-card-content>
+          </mat-card> 
+          <div id="inline"> 
+            <div class="one"><button class="btn btn-primary" type="submit"[disabled]="!batchForm.valid">Submit</button> </div> 
+            <div class="two">
+                
+              
+            </div> 
+            </div>             -->
+     </form>
+    </div>

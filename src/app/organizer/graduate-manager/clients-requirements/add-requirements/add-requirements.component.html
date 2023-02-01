@@ -1,0 +1,97 @@
+<div class="container-fluid addMockInterview">
+  <h1 class="titleForm">Client Requirements Form</h1>
+  <form [formGroup]="clientRequirements" (ngSubmit)="onSubmit()">
+    <div class="form-group givespace">
+      <label>Batch Name </label>
+      <select formControlName="batchName" class="form-control"
+        [class.is-invalid]="batchName?.invalid && batchName?.touched">
+        <option value="">Batch Name</option>
+
+        <option [value]="i.batchName" *ngFor="let i of getBatchName">{{i.batchName}}</option>
+      </select>
+
+      <div *ngIf="batchName?.invalid && batchName?.touched">
+
+        <small class="text-danger" *ngIf="batchName?.errors?.['required']">Field
+          is required</small>
+      </div>
+    </div>
+    <div class="form-group givespace">
+      <label>Job ID </label>
+      <select formControlName="jobId" class="form-control"
+        [class.is-invalid]="jobId?.invalid && jobId?.touched">
+        <option value="">Job Id</option>
+        <option [value]="i.jobId" *ngFor="let i of getJob">{{i.jobId}} - {{i.client}}</option>
+      </select>
+      <div *ngIf="jobId?.invalid && jobId?.touched">
+        <small class="text-danger" *ngIf="jobId?.errors?.['required']">Field
+          is required</small>
+      </div>
+    </div>
+    <div class="form-group givespace">
+      <label for="noOfPositions" class="formbold-form-label">Number of Openings</label>
+      <input [class.is-invalid]="noOfPositions?.invalid &&
+        noOfPositions?.touched" type="number" formControlName="noOfPositions"
+        id="noOfPositions"
+        class="formbold-form-input" required>
+
+      <div *ngIf="noOfPositions?.invalid && noOfPositions?.touched">
+        <small class="text-danger" *ngIf="noOfPositions?.errors?.['required']">Field
+          is required</small>
+      </div>
+    </div>
+    <div class="form-group givespace">
+      <label for="stakeholder" class="formbold-form-label">Stakeholder Name</label>
+      <input [class.is-invalid]="stakeholder?.invalid && stakeholder?.touched"
+        type="text" formControlName="stakeholder" id="stakeholder"
+        class="formbold-form-input" required>
+
+      <div *ngIf="stakeholder?.invalid && stakeholder?.touched">
+        <small class="text-danger" *ngIf="stakeholder?.errors?.['required']">Field
+          is required</small>
+      </div>
+    </div>
+
+    <div class="form-group givespace">
+
+      <label for="department" class="formbold-form-label">Department Name</label>
+      <input [class.is-invalid]="department?.invalid && department?.touched"
+        type="text" formControlName="department" id="department"
+        class="formbold-form-input" required>
+
+      <div *ngIf="department?.invalid && department?.touched">
+        <small class="text-danger" *ngIf="department?.errors?.['required']">Field
+          is required</small>
+      </div>
+    </div>
+    <div class="form-group givespace">
+
+      <label for="location" class="formbold-form-label">Location</label>
+
+      <input [class.is-invalid]="location?.invalid && location?.touched"
+        type="text" formControlName="location" id="location"
+        class="formbold-form-input" required>
+
+      <div *ngIf="location?.invalid && location?.touched">
+        <small class="text-danger" *ngIf="location?.errors?.['required']">Field
+          is required</small>
+      </div>
+    </div>
+
+    <div class="form-group givespace">
+      <label for="gender" class="formbold-form-label">Gender</label>
+      <input [class.is-invalid]="gender?.invalid && gender?.touched" type="text"
+        formControlName="gender" id="gender"
+        class="formbold-form-input" required>
+
+      <div *ngIf="gender?.invalid && gender?.touched">
+        <small class="text-danger" *ngIf="gender?.errors?.['required']">Field is
+          required</small>
+      </div>
+    </div>
+
+    <br>
+    <button class="btn btn-primary" type="submit"
+      [disabled]="!clientRequirements.valid">Register</button>
+
+  </form>

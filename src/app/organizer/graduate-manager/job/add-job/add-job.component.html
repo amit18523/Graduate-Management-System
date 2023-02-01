@@ -1,0 +1,36 @@
+<div class="container-fluid addFeedback">
+    <h1 class="titleForm">Job Form</h1>
+    <form [formGroup]="JobForm" (ngSubmit)="onSubmit()">
+      <div class="form-group givespace">
+        <label>Batch Name</label>
+          <select formControlName="batchName" class="form-control"
+          [class.is-invalid]="batchName?.invalid && batchName?.touched">
+          <option value="">Batch Name</option>
+          <option [value]="i.batchName" *ngFor="let i of getBatchName">{{i.batchName}}</option>
+        </select>
+        <div *ngIf="batchName?.invalid && batchName?.touched">
+          <small class="text-danger" *ngIf="batchName?.errors?.['required']">Field
+            is required</small>
+        </div>
+        </div>
+        <div class="form-group givespace">
+            <label>Client</label>
+            <input [class.is-invalid]="client?.invalid && client?.touched" type="text" formControlName="client" id="client"
+            class="formbold-form-input" required>
+            <div *ngIf="client?.invalid && client?.touched">
+              <small class="text-danger" *ngIf="client?.errors?.['required']">Field is required</small></div>
+        </div>
+        <div class="form-group givespace">
+            <label>Vertical</label>
+            
+            <input [class.is-invalid]="vertical?.invalid && vertical?.touched" type="text" formControlName="vertical" id="vertical"
+            class="formbold-form-input" required>
+            <div *ngIf="vertical?.invalid && vertical?.touched">
+              <small class="text-danger" *ngIf="vertical?.errors?.['required']">Field is required</small></div>
+        </div>
+        <br>
+        <button class="btn btn-primary" type="submit" [disabled]="!JobForm.valid">Register</button>
+    </form>
+</div>  
+<div>
+

@@ -1,0 +1,33 @@
+<div class="container-fluid addFeedback">
+ <h1 class="titleForm">Add Project</h1>
+  <form [formGroup]="addProject" (ngSubmit)="onSubmit()">
+    <div class="form-group givespace">
+      <label for="projectName" class="formbold-form-label">Project Name</label>
+      <input [class.is-invalid]="projectName?.invalid && projectName?.touched" type="text" formControlName="projectName" id="projectName"
+        class="formbold-form-input" required>
+  
+        <div *ngIf="projectName?.invalid && projectName?.touched">
+          <small class="text-danger" *ngIf="projectName?.errors?.['required']">Field is required</small>
+        </div>
+    </div>
+    <div class="form-group givespace">
+      <label>Batch Name</label>
+      <select formControlName="batchName" class="form-control"
+      [class.is-invalid]="batchName?.invalid && batchName?.touched">
+      <option value="">Batch Name</option>
+      <option [value]="i.batchName" *ngFor="let i of batches">{{i.batchName}}</option>
+    </select>
+   
+    <div *ngIf="batchName?.invalid && batchName?.touched">
+
+      <small class="text-danger" *ngIf="batchName?.errors?.['required']">Field
+        is required</small>
+    </div>
+   
+      </div>
+      <br>
+    <button class="btn btn-primary" type="submit" [disabled]="!addProject.valid">Register</button>
+  </form>
+</div>
+<div>
+ 

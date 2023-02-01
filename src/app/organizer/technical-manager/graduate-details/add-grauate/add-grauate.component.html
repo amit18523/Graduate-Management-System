@@ -1,0 +1,109 @@
+
+<div class="container-fluid addFeedback">
+  <h1 class="titleForm">Graduate Form</h1>
+
+  <form [formGroup]="graduateForm" (ngSubmit)="onSubmit()">
+    <div class="form-group givespace">
+      <label>Batch Name</label>
+      <select [class.is-invalid]="batchName?.invalid && batchName?.touched"
+        formControlName="batchName" class="form-control">
+        <option value="">Batch Name</option>
+        <option [value]="i.batchName" *ngFor="let i of getBatchName">{{i.batchName}}</option>
+      </select>
+      <div *ngIf="batchName?.invalid && batchName?.touched">
+
+        <small class="text-danger" *ngIf="batchName?.errors?.['required']">Field
+          required</small>
+
+      </div>
+    </div>
+
+    <div class="form-group givespace">
+      <label>Employee Name</label>
+      <input [class.is-invalid]="employeeName?.invalid && employeeName?.touched"
+        type="text" formControlName="employeeName" id="empName"
+        class="formbold-form-input" required>
+      <div *ngIf="employeeName?.invalid && employeeName?.touched">
+        <small class="text-danger" *ngIf="employeeName?.errors?.['required']">Field
+          required</small>
+      </div>
+
+    </div>
+
+    <div class="form-group givespace">
+      <label>Designation</label>
+      <input [class.is-invalid]="designation?.invalid && designation?.touched"
+        type="text" formControlName="designation" id="designation"
+        class="formbold-form-input" required>
+      <!-- {{designation?.invalid}}   -->
+      <div *ngIf="designation?.invalid && designation?.touched">
+        <small class="text-danger" *ngIf="designation?.errors?.['required']">Field
+          required</small>
+      </div>
+    </div>
+    <div class="form-group givespace">
+      <label>Date of Joining</label>
+      <input type="date" formControlName="dateOfJoining" id="dateOfJoining"
+        class="formbold-form-input" required>
+    </div>
+    <div class="form-group givespace">
+      <label>Mobile Number</label>
+      <input [class.is-invalid]="mobileNumber?.invalid && mobileNumber?.touched"
+        type="number" formControlName="mobileNumber" id="mobileNumber"
+        class="formbold-form-input" required>
+      <!-- {{mobileNumber?.invalid}}   -->
+      <div *ngIf="mobileNumber?.invalid && mobileNumber?.touched">
+        <small class="text-danger" *ngIf="mobileNumber?.errors?.['required']">Field
+          required</small>
+      </div>
+    </div>
+    <div class="form-group givespace">
+      <label>Email</label>
+      <input [class.is-invalid]="email?.invalid && email?.touched" type="email"
+        formControlName="email" id="email" class="formbold-form-input" required>
+      <!-- {{email?.invalid}}   -->
+      <div *ngIf="email?.invalid && email?.touched">
+        <small class="text-danger" *ngIf="email?.errors?.['required']">Field
+          required</small>
+      </div>
+    </div>
+
+    <div class="form-group givespace">
+      <label>Date of Birth</label>
+      <input type="date" formControlName="dateOfBirth" id="dateOfBirth"
+        class="formbold-form-input" [max]="date" required>
+    </div>
+
+    <div class="form-group givespace">
+      <label>Gender</label>
+      <input [class.is-invalid]="gender?.invalid && gender?.touched" type="text"
+        formControlName="gender" id="gender" class="formbold-form-input"
+        required>
+      <!-- {{gender?.invalid}}   -->
+      <div *ngIf="gender?.invalid && gender?.touched">
+        <small class="text-danger" *ngIf="gender?.errors?.['required']">Field
+          required</small>
+      </div>
+    </div>
+    <div class="form-group givespace">
+      <label>Delivery Director</label>
+      <input [class.is-invalid]="deliveryDirector?.invalid &&
+        deliveryDirector?.touched" type="text"
+        formControlName="deliveryDirector" id="deliveryDirector"
+        class="formbold-form-input" required>
+      <!-- {{deliveryDirector?.invalid}}   -->
+      <div *ngIf="deliveryDirector?.invalid && deliveryDirector?.touched">
+        <small class="text-danger"
+          *ngIf="deliveryDirector?.errors?.['required']">Field required</small>
+      </div>
+    </div>
+
+    <br>
+
+      <button class="btn btn-primary" type="submit" [disabled]="!graduateForm.valid">Register</button> 
+      
+    <br>
+    <br>
+  </form>
+
+</div>

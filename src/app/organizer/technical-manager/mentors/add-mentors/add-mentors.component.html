@@ -1,0 +1,66 @@
+
+<div class="container-fluid addFeedback">
+  <h1 class="titleForm">Mentors Form</h1>
+
+  <form [formGroup]="MentorForm" (ngSubmit)="onSubmit()">
+      <div class="form-group givespace">
+        <label>Emp Id Grad</label>
+        <select  formControlName="empIdGrad" class = "form-control" [class.is-invalid]="empIdGrad?.invalid && empIdGrad?.touched">
+          <option value="">Select Graduate</option>
+          <option [value]="i.empId" *ngFor="let i of getEmpId">{{i.empId}} - {{i.employeeName}}</option>
+        </select>
+        <div *ngIf="empIdGrad?.invalid && empIdGrad?.touched">
+
+          <small class="text-danger" *ngIf="empIdGrad?.errors?.['required']">Field required</small>
+        </div>
+       
+      </div>
+      <div class="form-group givespace">
+        <label>Emp Id Mentor</label>
+        <select  formControlName="empIdMentor" class = "form-control" [class.is-invalid]="empIdMentor?.invalid && empIdMentor?.touched">
+          <option value="">Select Mentor</option>
+          <option [value]="i.empId" *ngFor="let i of getMentorEmpId">{{i.empId}} - {{i.employeeName}}</option>
+        </select>
+        <div *ngIf="empIdMentor?.invalid && empIdMentor?.touched">
+
+          <small class="text-danger" *ngIf="empIdMentor?.errors?.['required']">Field required</small>
+        </div>
+       
+      </div>
+      <div class="form-group givespace">
+        <label>Client Project Name</label>
+        <input [class.is-invalid]="clientProjectName?.invalid && clientProjectName?.touched" type="text" formControlName="clientProjectName" id="clientProjectName" class="formbold-form-input" required>
+
+        <div *ngIf="clientProjectName?.invalid && clientProjectName?.touched">
+
+          <small class="text-danger" *ngIf="clientProjectName?.errors?.['required']">Field required</small>
+        </div>
+        
+    </div>
+
+    <div class="form-group givespace">
+      <label>Stakeholder Name</label>
+      <input [class.is-invalid]="stakeholderName?.invalid && stakeholderName?.touched" type="text" formControlName="stakeholderName" id="stakeholderName" class="formbold-form-input" required>
+      <div *ngIf="stakeholderName?.invalid && stakeholderName?.touched">
+
+        <small class="text-danger" *ngIf="stakeholderName?.errors?.['required']">Field required</small>
+      </div>
+     
+
+  </div>
+  <div class="form-group givespace">
+    <label>Client</label>
+    <input [class.is-invalid]="client?.invalid && client?.touched" type="text" formControlName="client" id="client" class="formbold-form-input" required>
+    <div *ngIf="client?.invalid && client?.touched">
+
+      <small class="text-danger" *ngIf="client?.errors?.['required']">Field required</small>
+    </div>
+   
+</div>
+<br>
+    <button class="btn btn-primary" type="submit"  [disabled]="!MentorForm.valid">Register</button> 
+    <br>
+    <br>
+  </form>
+</div>
+ 

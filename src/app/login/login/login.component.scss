@@ -1,0 +1,74 @@
+@import '/src/scss/variables.scss';
+
+.display{
+  font-size: xx-large;
+  z-index: 1;
+
+
+    margin: 5% 0 5% 0;
+    color: #460C68;
+    font-size: 4vmax;
+    font-weight: bold;
+    text-align: center;
+ 
+}
+
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  top : 25%;
+
+  .content {
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .app-name {
+      margin-top: 0px;
+      padding-bottom: 10px;
+      font-size: 32px;
+    }
+    .login-form {
+      padding: 40px;
+      background: $white;
+      max-width: 500px;
+      box-shadow: 0 0 20px #ddd;
+      input:-webkit-autofill {
+        box-shadow: 0 0 0 30px $white inset;
+        -webkit-box-shadow: 0 0 0 30px $white inset;
+      }
+      position: absolute;
+      top: 25%;
+    }
+  }
+  &:after {
+    content: '';
+    background: $white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 50%;
+    right: 0;
+  }
+  &:before {
+    content: '';
+    background: $primary-color;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+.loginButton{
+  background-color: #460C68 !important;
+}
+
+
+  .mdc-text-field--filled{
+    background-color: whitesmoke;
+    margin:  1%;
+}

@@ -1,0 +1,39 @@
+.dashboardOuterDiv{
+  width: 50%;
+}
+.card {
+  margin: 4%;
+  h1{
+    text-align: center;
+  }
+}
+
+.totalStudent {
+  background: linear-gradient(60deg, #c0eef5, #99dee7);
+  width: 100%;
+}
+
+.studentPlaced {
+  background: linear-gradient(60deg, #c3eec5, #baeebc);
+  width: 100%;
+}
+
+.yetPlaced {
+  background: linear-gradient(60deg, #FFDCA9, #FFDCA9);
+  width: 100%;
+}
+
+.Requirements {
+  background: linear-gradient(60deg, #e8b4c5, #e3b0c2);
+  width: 100%;
+}
+
+.card-body {
+  align-content: center;
+}
+
+.dashboardGrad {
+  height: 150px;
+}
+
+// .textfield {}

@@ -1,0 +1,50 @@
+<div class="container-fluid addFeedback">
+  <h1 class="titleForm">Buddy Form</h1>
+
+  <form [formGroup]="buddyForm" (ngSubmit)="onSubmit()">
+    <div class="form-group givespace">
+      <select #val (click)="onChangeValue(val.value)" class="form-control"
+        name="sel3">
+        <option val=""> Select Grad Batch </option>
+        <option [value]="i.batchName" *ngFor="let i of batches">{{i.batchName}}</option>
+      </select>
+    </div>
+
+    <div class="form-group givespace">
+      <label>Graduate ID </label>
+      <select formControlName="gradId" class="form-control"
+        [class.is-invalid]="gradId?.invalid && gradId?.touched">
+        <option value="">Grad Id</option>
+        <option [value]="i.empId" *ngFor="let i of getUpdatedGrads">{{i.empId}} -
+          {{i.employeeName}}</option>
+      </select>
+      <div *ngIf="gradId?.invalid && gradId?.touched">
+        <small class="text-danger" *ngIf="gradId?.errors?.['required']">Field
+          required</small>
+      </div>
+    </div>
+    <br>
+    <div class="form-group givespace" style="margin-top:10px">
+
+      <select #valhere (click)="onChange(valhere.value)" class="form-control"
+        name="sel3">
+        <option val=""> Select Buddy Batch </option>
+        <option [value]="i.batchName" *ngFor="let i of batches">{{i.batchName}}</option>
+      </select>
+    </div>
+    <div class="form-group givespace">
+      <label>Buddy Id</label>
+      <select formControlName="buddyId" class="form-control">
+        <option value="">Buddy Id</option>
+        <option [value]="i.empId" *ngFor="let i of getUpdatadBuddy">{{i.empId}}
+          - {{i.employeeName}}</option>
+      </select>
+      <div *ngIf="buddyId?.invalid && buddyId?.touched">
+        <small class="text-danger" *ngIf="buddyId?.errors?.['required']">Field
+          required</small>
+      </div>
+    </div>
+    <br>
+    <button class="btn btn-primary" type="submit" [disabled]="!buddyForm.valid">Register</button>
+  </form>
+</div>

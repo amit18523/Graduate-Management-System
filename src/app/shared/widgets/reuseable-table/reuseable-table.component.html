@@ -1,0 +1,34 @@
+<!-- <p>reuseable-table works!</p> -->
+<!-- <mat-form-field appearance="fill">
+  <input matInput placeholder="search" autocomplete="off" (keyup)="filterData($event)">
+</mat-form-field>  -->
+<!-- <mat-form-field appearance="fill">
+  <mat-label>Favorite food</mat-label>
+  <mat-select (select)="filterData($event)"> -->
+<!-- <mat-option *ngFor="let bat of bartcj.batchID" [value]="food.value"> -->
+<!-- <mat-option [value]="i.batchId" *ngFor="let i of batches" >{{i.batchId}}</mat-option>
+  </mat-select>
+</mat-form-field> -->
+<!-- <select   (select)="filterData($event)"
+name="sel3">
+<option [value]="i.batchId" *ngFor="let i of batches">{{i.batchId}}</option>
+</select> -->
+<mat-form-field class="MatForm">
+  <mat-select placeholder="Batch">
+    <mat-option *ngFor="let i of storeBatchName"[value]="i.batchName"
+      (click)="filterData(i.batchName)">
+      {{i.batchName}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-table *ngIf="dataSource && show" [dataSource]="dataSource">
+
+  <ng-container *ngFor="let column of columns"
+    [cdkColumnDef]="column.columnDef">
+    <mat-header-cell *cdkHeaderCellDef>{{ column.header }}</mat-header-cell>
+    <mat-cell *cdkCellDef="let row" of>{{ column.cell(row) }}</mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+<!-- <button (click)="onclick()">click me</button> -->

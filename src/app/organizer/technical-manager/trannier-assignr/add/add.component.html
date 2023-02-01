@@ -1,0 +1,89 @@
+<!--      selectBatchId:[''],
+          selectTopicName:[''],
+          trainerName1:[''],
+          trainerName2:[''],
+          trainingDate: Date,
+          trainingSession:[''],
+          tranningObjective:[''] -->
+
+<div class="container-fluid addFeedback">
+    <h1 class="titleForm">Trainer Assign Form</h1>
+  
+     <form [formGroup]="trannierAssignment" (ngSubmit)="onSubmit()">
+
+      <div class="form-group  givespace ">
+        <label>Batch Name</label>
+        <select  formControlName="batchName" class = "form-control"  [class.is-invalid]="batchName?.invalid && batchName?.touched">
+          <option value="">Batch Name</option>
+          <option [value]="i.batchName" *ngFor="let i of getBatchName">{{i.batchName}}</option>
+        </select>
+        <div *ngIf="batchName?.invalid && batchName?.touched">
+          <small class="text-danger" *ngIf="batchName?.errors?.['required']">Field required</small>
+            </div>
+        
+        </div>
+        <div class="form-group  givespace">
+          <label>Topic Name</label>
+          <select  formControlName="topicName" class = "form-control"   [class.is-invalid]="topicName?.invalid && topicName?.touched">
+            <option value="">Topic Name</option>
+            <option [value]="i.topicName" *ngFor="let i of getTopicName">{{i.topicName}}</option>
+        </select>
+        <div *ngIf="topicName?.invalid && topicName?.touched">
+          <small class="text-danger" *ngIf="topicName?.errors?.['required']">Field required</small>
+            </div>
+        
+          </div>
+          <div class="form-group  givespace">
+            <label>Trainer Name 1</label>
+            <input   [class.is-invalid]="trainerName1?.invalid && trainerName1?.touched" type="text" formControlName="trainerName1" id="trainerName1" class="formbold-form-input" required>
+            <div *ngIf="trainerName1?.invalid && trainerName1?.touched">
+              <small class="text-danger" *ngIf="trainerName1?.errors?.['required']">Field required</small>
+                </div>
+            
+          </div>
+        <div class="form-group  givespace">
+          <label>Trainer Name 2</label>
+          <input   [class.is-invalid]="trainerName2?.invalid && trainerName2?.touched" type="text" formControlName="trainerName2" id="trainerName2" class="formbold-form-input" required>
+          <div *ngIf="trainerName2?.invalid && trainerName2?.touched">
+            <small class="text-danger" *ngIf="trainerName2?.errors?.['required']">Field required</small>
+              </div>
+          
+        </div>
+      <div class="form-group  givespace">
+        <label>Training Date</label>
+        <input  type="date" formControlName="training_date" id="training_date" class="formbold-form-input" required>
+    </div>
+    <div class="form-group  givespace">
+      <label>Training Session</label>
+      <input   [class.is-invalid]="training_session?.invalid && training_session?.touched" type="text" formControlName="training_session" id="training_session" class="formbold-form-input" required>
+      <div *ngIf="training_session?.invalid && training_session?.touched">
+
+        <small class="text-danger" *ngIf="training_session?.errors?.['required']">Field required</small>
+      
+          </div>
+      
+    </div>
+  <div class="form-group  givespace">
+    <label>Training Objective</label>
+    <input   [class.is-invalid]="trainingObjective?.invalid && trainingObjective?.touched" type="text" formControlName="trainingObjective" id="trainingObjective" class="formbold-form-input" required>
+    <div *ngIf="trainingObjective?.invalid && trainingObjective?.touched">
+
+      <small class="text-danger" *ngIf="trainingObjective?.errors?.['required']">Field required</small>
+    
+        </div>
+    
+  </div>
+  
+      
+
+<br>
+
+ 
+      <button class="btn btn-primary" type="submit" [disabled]="!trannierAssignment.valid">Register</button> 
+      <br>
+      <br>
+    </form>
+    </div>
+  
+  
+  

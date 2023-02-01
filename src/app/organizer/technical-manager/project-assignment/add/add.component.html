@@ -1,0 +1,100 @@
+<div class="container-fluid addFeedback">
+  <h1 class="titleForm">Project Assignment Form</h1>
+
+  <form [formGroup]="projectAssignmentForm" (ngSubmit)="onSubmit()">
+    <div class="form-group givespace">
+      <label>Batch Name</label>
+      <select [class.is-invalid]="batchName?.invalid && batchName?.touched"
+        formControlName="batchName" class="form-control">
+        <option value="">Batch Name</option>
+        <option [value]="i.batchName" *ngFor="let i of getBatchName">{{i.batchName}}</option>
+      </select>
+
+      <div *ngIf="batchName?.invalid && batchName?.touched">
+        <small class="text-danger" *ngIf="batchName?.errors?.['required']">Field
+          required</small>
+      </div>
+    </div>
+    
+
+    <div class="form-group givespace">
+      <label>Team Number</label>
+      <input [class.is-invalid]="teamNumber?.invalid && teamNumber?.touched"
+        type="number" formControlName="teamNumber" id="teamNumber"
+        class="formbold-form-input" required>
+      <div *ngIf="teamNumber?.invalid && teamNumber?.touched">
+        <small class="text-danger" *ngIf="teamNumber?.errors?.['required']">Field
+          required
+        </small>
+      </div>
+    </div>
+  
+
+    <div class="form-group givespace">
+      <label>Graduate</label>
+      <button type="button" class="btn btn-secondary btn-sm m-2"
+        (click)="addEmpIds()">Add Graduate</button>
+      <div formArrayName="empIds" *ngFor="let e of empIds.controls; let
+        i=index">
+
+        <select class="form-control" class="form-control my-1"
+          [formControlName]="i">
+          <option value="">Graduate Id</option>
+          <!-- <option *ngFor="let batchId of batchIdList" [ngValue]="batchId">{{batchId}}</option> -->
+          <option [value]="i.empId" *ngFor="let i of getEmpName">{{i.empId}} - {{i.employeeName}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group givespace">
+      <label>Project Lead 1</label>
+      <input [class.is-invalid]="projectLead1?.invalid && projectLead1?.touched"
+        type="text" formControlName="projectLead1" id="projectLead1"
+        class="formbold-form-input" required>
+      <div *ngIf="projectLead1?.invalid && projectLead1?.touched">
+
+        <small class="text-danger" *ngIf="projectLead1?.errors?.['required']">Field
+          required</small>
+
+      </div>
+
+    </div>
+
+    <div class="form-group givespace">
+      <label>Project Lead 2</label>
+      <input [class.is-invalid]="projectLead2?.invalid && projectLead2?.touched"
+        type="text" formControlName="projectLead2" id="projectLead2"
+        class="formbold-form-input" required>
+      <div *ngIf="projectLead2?.invalid && projectLead2?.touched">
+        <small class="text-danger" *ngIf="batchName?.errors?.['required']">Field
+          required</small>
+      </div>
+
+    </div>
+
+    <div class="form-group givespace">
+            <label>Project Name</label>
+      <select [class.is-invalid]="projectName?.invalid && projectName?.touched"
+        formControlName="projectName" class="form-control">
+        <option value="">Project Name</option>
+        <option [value]="i.projectName" *ngFor="let i of getProjectName">{{i.projectName}}</option>
+      </select>
+
+      <div *ngIf="projectName?.invalid && projectName?.touched">
+        <small class="text-danger" *ngIf="projectName?.errors?.['required']">Field
+          required</small>
+      </div>
+
+    </div>
+    <br>
+
+
+    <button class="btn btn-primary" type="submit"
+      [disabled]="!(!projectName?.invalid && !projectLead2?.invalid &&
+      !projectLead1?.invalid && !teamNumber?.invalid && !batchName?.invalid
+      )">Register</button>
+    <br>
+    <br>
+  </form>
+  <br>
+</div>

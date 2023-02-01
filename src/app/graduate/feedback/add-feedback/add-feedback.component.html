@@ -1,0 +1,19 @@
+<div class="addFeedback">
+    <form [formGroup]="graduateFeedBack" (ngSubmit)="createFeedback()">
+        <!-- <div class="form-group">
+            <label>Batch ID </label>
+            <select formControlName="selectBatchId" class="form-control">
+              <option value="">Batch ID</option>
+              <option *ngFor="let batchId of batchIdList" [ngValue]="batchId">{{batchId}}</option>
+            </select>
+          </div> -->
+
+        <div>
+            <label for="FeedBack" class="formbold-form-label"> Message </label>
+            <textarea rows="6" name="message" id="FeedBack" placeholder="Type your message" class="formbold-form-input"
+                formControlName="feedbackNote"></textarea>
+        </div>
+
+        <button type="submit" class="formbold-btn">Submit</button>
+    </form>
+</div>

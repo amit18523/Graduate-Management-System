@@ -1,0 +1,58 @@
+<!-- selectBatchId:[''],
+      selectTopicId:[''],
+      trainingTopicName:[''],
+      trainingCalendarDate:Date,
+      trainingSession:[''],
+      trainingCalendarApprove:['']
+       -->
+<div class="container-fluid addFeedback">
+    <h1 class="titleForm">Technical Calendar Form</h1>
+  
+    <form [formGroup]="TechnicalCalendarForm" (ngSubmit)="onSubmit()">
+      <div class="form-group givespace">
+        <label>Batch Name</label>
+        <select  formControlName="batchName" class = "form-control"[class.is-invalid]="batchName?.invalid && batchName?.touched">
+          
+          <option value="">Batch Name</option>
+          <!-- <option *ngFor="let batchId of batchIdList" [ngValue]="batchId">{{batchId}}</option> -->
+          <option [value]="i.batchName" *ngFor="let i of getBatchName">{{i.batchName}}</option>
+        </select>
+        <div *ngIf="batchName?.invalid && batchName?.touched">
+  
+          <small class="text-danger" *ngIf="batchName?.errors?.['required']">Field required</small>
+        </div>
+        </div>
+                <div class="form-group givespace">
+            <label>Training Topic Name</label>
+            <select  formControlName="trainingTopicName" class = "form-control"[class.is-invalid]="trainingTopicName?.invalid && trainingTopicName?.touched">
+          
+              <option value="">Training Topic Name</option>
+              <!-- <option *ngFor="let batchId of batchIdList" [ngValue]="batchId">{{batchId}}</option> -->
+              <option [value]="i.topicName" *ngFor="let i of getTopicName">{{i.topicName}}</option>
+            </select>
+            <div *ngIf="trainingTopicName?.invalid && trainingTopicName?.touched">
+  
+              <small class="text-danger" *ngIf="batchName?.errors?.['required']">Field required</small>
+            </div>
+            </div>
+        <div class="form-group givespace">
+            <label>Training Calendar Date</label>
+            <input type="date" formControlName="trainingCalendarDate" id="trainingCalendarDate" class="formbold-form-input" required>
+        </div>
+        <div class="form-group givespace">
+          <label>Training Session</label>
+          <input [class.is-invalid]="trainingSession?.invalid && trainingSession?.touched" type="text" formControlName="trainingSession" id="trainingSession" class="formbold-form-input" required>
+          <div *ngIf="trainingSession?.invalid && trainingSession?.touched">
+  
+            <small class="text-danger" *ngIf="trainingSession?.errors?.['required']">Field required</small>
+          </div>
+        </div>
+<br>
+      <button class="btn btn-primary" type="submit" [disabled]="!TechnicalCalendarForm.valid">Register</button> 
+  
+    
+      <br>
+    <br>
+    </form>
+    </div>
+  

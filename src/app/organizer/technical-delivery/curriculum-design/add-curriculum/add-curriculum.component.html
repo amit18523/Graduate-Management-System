@@ -1,0 +1,42 @@
+<div class="container-fluid ">
+  <h1 class="titleForm">Curriculum Design</h1>
+  <form [formGroup]="curriculumDesign" (ngSubmit)="onSubmit()">
+    <div class="form-group givespace">
+      <label>Batch Name </label>
+      <!-- <option [value]="i.batchName" *ngFor="let i of getBatchName">{{i.batchName}}</option> -->
+      <select formControlName="batchName" class="form-control"
+        [class.is-invalid]="batchName?.invalid && batchName?.touched">
+        <option value="">Batch Name</option>
+
+        <!-- <option *ngFor="let obj of here" [ngValue]="obj">{{obj}}</option> -->
+        <option [value]="i.batchName" *ngFor="let i of getBatchName">{{i.batchName}}</option>
+      </select>
+      <!-- {{batchName?.invalid}} -->
+      <div *ngIf="batchName?.invalid && batchName?.touched">
+
+        <small class="text-danger" *ngIf="batchName?.errors?.['required']">Batch
+          Name
+          is required</small>
+      </div>
+    </div>
+    <div class="form-group givespace">
+      <!-- <label for="topicName" class="formbold-form-label">Session Name</label> -->
+      <!-- <input type="text" formControlName="topicName"  id="topicName" class="formbold-form-input" required> -->
+      <label for="topicName" class="formbold-form-label">Session Name</label>
+      <!-- <input type="time" formControlName="time" id="interviewTime" class="formbold-form-input" required> -->
+      <input [class.is-invalid]="topicName?.invalid && topicName?.touched"
+        type="text" formControlName="topicName" id="topicName"
+        class="formbold-form-input" required>
+      <!-- {{topicName?.invalid}}   -->
+      <div *ngIf="topicName?.invalid && topicName?.touched">
+        <small class="text-danger" *ngIf="topicName?.errors?.['required']">Topic
+          Name is required</small>
+      </div>
+    </div>
+    <br>
+    <button class="btn btn-primary" type="submit"
+      [disabled]="!curriculumDesign.valid">Register</button>
+    <br>
+    <br>
+  </form>
+</div>
